@@ -1,3 +1,3 @@
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <p>Footer</p>
+  <p>Copyrigth@2019 Pondok Informatika Al Madinah</p>
 </div>
