@@ -8,6 +8,6 @@ class FormController extends Controller
 {
 	public function cek()
 	{
-		echo "Halaman cek umur <br>";
+		// echo "Halaman cek umur <br>";
 	}
 }
