@@ -10,11 +10,24 @@
               <h3 class="box-title">Create Data Example</h3>
             </div>
             <!-- /.box-header -->
+
+
             <!-- form start -->
             <form class="form-horizontal" action="{{ url('admin/santri') }}" method="post">
               @csrf
               <div class="box-body">
 
+            {{-- menampilkan error validasi --}}
+            @if (count($errors) > 0)
+              <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <ul>
+                  @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                  @endforeach
+                </ul>
+              </div>
+            @endif
                 <div class="form-group">
                   <label for="nama" class="col-sm-2 control-label">Nama</label>
                   <div class="col-sm-10">
@@ -43,14 +56,14 @@
                 <div class="form-group">
                   <label for="password" class="col-sm-2 control-label">Password</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" id="password" placeholder="Password">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                   </div>
                 </div>
 
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <a href="{{ url('admin/santri') }}" class="btn btn-default">Cancel</a>
                 <button type="submit" class="btn btn-info pull-right">Create</button>
               </div>
               <!-- /.box-footer -->
@@ -59,20 +72,3 @@
           <!-- /.box -->
           </section>
 @endsection
-{{-- 	<form action="{{ url('admin/santri') }}" method="post">
-	@csrf
-	Nama : 
-	<input type="text" name="nama">
-	<br>
-	Email :
-	<input type="email" name="email">
-	<br>
-	Gender :
-	<input type="radio" name="gender" value="0"> Perempuan
-	<input type="radio" name="gender" value="1"> Laki Laki
-	<br>
-	Password :
-	<input type="text" name="password">
-	<br>
-	<button type="submit">Submit</button>
-	</form> --}}
