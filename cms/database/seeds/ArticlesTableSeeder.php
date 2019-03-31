@@ -13,14 +13,16 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker 		= Factory::create('id_ID');
-        $users_id	= DB::table('users')->pluck('id');
+        $faker 		          = Factory::create('id_ID');
+        $users_id	          = DB::table('users')->pluck('id');
+        $categories_id        = DB::table('categories')->pluck('id');
 
         for ($i=0; $i<20; $i++) { 
         	$data[$i] = [
-        		'user_id'	=> $faker->randomElement($users_id),
-        		'title'		=> $faker->sentence(3),
-        		'content'	=> $faker->paragraphs(3, true),
+        		'user_id'	    => $faker->randomElement($users_id),
+                'category_id'   => $faker->randomElement($categories_id),
+        		'title'	        => $faker->sentence(3),
+        		'content'	    => $faker->paragraphs(3, true),
         	];
         }
 

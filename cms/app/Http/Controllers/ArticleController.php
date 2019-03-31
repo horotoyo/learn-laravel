@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Model\Article;
+use App\Model\Category;
 use App\Model\User;
 
-class UserController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users  = User::all();
-        return view('users.index', compact('users'));
+        $articles = Article::all();
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -25,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $articles = Article::all();
+        return view('articles.create', compact('articles'));
     }
 
     /**
@@ -36,8 +39,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect('/users');
+        Article::create($request->all());
+        return redirect('/articles');
     }
 
     /**
@@ -48,6 +51,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        //
     }
 
     /**
@@ -58,8 +62,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user   = User::find($id);
-        return view('users.edit', compact('user'));
+        $article    = Article::find($id);
+        $users      = User::all();
+        $categories = Category::all();
+        return view('articles.edit', compact('article', 'users', 'categories'));
     }
 
     /**
@@ -71,9 +77,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user   = User::find($id);
-        $user->update($request->all());
-        return redirect('/users');
+        $article   = Article::find($id);
+        $article->update($request->all());
+        return redirect('/articles');
     }
 
     /**
@@ -84,8 +90,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user   = User::find($id);
-        $user->delete();
-        return redirect('/users');
+        $article   = Article::find($id);
+        $article->delete();
+        return redirect('/articles');
     }
 }

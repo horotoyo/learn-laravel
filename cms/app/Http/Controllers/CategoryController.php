@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\User;
+use App\Model\Category;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users  = User::all();
-        return view('users.index', compact('users'));
+        $categories  = Category::all();
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('categories.create');
     }
 
     /**
@@ -36,8 +36,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect('/users');
+        Category::create($request->all());
+        return redirect('/categories');
     }
 
     /**
@@ -58,8 +58,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user   = User::find($id);
-        return view('users.edit', compact('user'));
+        $category   = Category::find($id);
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -71,9 +71,9 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user   = User::find($id);
-        $user->update($request->all());
-        return redirect('/users');
+        $category   = Category::find($id);
+        $category->update($request->all());
+        return redirect('/categories');
     }
 
     /**
@@ -84,8 +84,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user   = User::find($id);
-        $user->delete();
-        return redirect('/users');
+        $category   = Category::find($id);
+        $category->delete();
+        return redirect('/categories');
     }
 }
