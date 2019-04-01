@@ -5,6 +5,7 @@
 </head>
 <body>
 
+	@include('layouts.sidebar')
 	<h3>Users List - <a href="{{ route('users.create') }}">Create User</a></h3>
 	<table>
 		<tr>

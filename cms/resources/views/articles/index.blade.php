@@ -5,6 +5,7 @@
 </head>
 <body>
 
+	@include('layouts.sidebar')
 	<h3>Articles List - <a href="{{ route('articles.create') }}">Create Aticle</a></h3>
 	<table>
 		<tr>
