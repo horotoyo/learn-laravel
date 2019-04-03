@@ -23,7 +23,14 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
-        <li><a href="{{ url('admin/santri') }}"><i class="fa fa-users"></i> <span>Santri</span></a></li>
-        <li><a href="{{ url('admin/guru') }}"><i class="glyphicon glyphicon-education"></i> <span>Guru</span></a></li>
+        <li class="{{ Request::is('admin/santri') || Request::is('admin/santri/*') ? 'active' : '' }}">
+          <a href="{{ url('admin/santri') }}"><i class="fa fa-users"></i> <span>Santri</span></a>
+        </li>
+        <li class="{{ Request::is('admin/guru') || Request::is('admin/guru/*') ? 'active' : '' }}">
+          <a href="{{ url('admin/guru') }}"><i class="glyphicon glyphicon-education"></i> <span>Guru</span></a>
+        </li>
+        <li class="{{ Request::is('admin/provinsi') || Request::is('admin/provinsi/*') ? 'active' : '' }}">
+          <a href="{{ url('admin/provinsi') }}"><i class="fa fa-globe"></i> <span>Provinsi</span></a>
+        </li>
       </ul>
     </section>

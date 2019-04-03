@@ -17,6 +17,12 @@
 
     <!-- Main content -->
     <section class="content">
+    	@if ($message = Session::get('success'))
+    	    <div class="alert alert-success alert-block">
+    	    	    <button type="button" class="close" data-dismiss="alert">×</button> 
+    	        <strong>{{ $message }}</strong>
+    		</div>
+    	@endif
     	<div class="box box-primary">
             <div class="box-body">
               <a class="btn btn-primary" style="margin-bottom: 10px;" href="/admin/guru/create"><i class="fa fa-plus-circle"></i> Create</a>
@@ -56,24 +62,6 @@
 						@endforeach
 					</tbody>
 				</table>
-					<div class="row">
-						<div class="col-xs-6">
-							<div style="margin-top: 25px;">
-								@if(!empty(Session::get('success')))
-								<div class="callout callout-success">
-									<h5>
-										<i class="icon fa fa-check"></i>
-										{{Session::get('success')}}
-									</h5>
-								</div>
-								@else
-								<div>
-								</div>
-								@endif
-							</div>
-						</div>
-					</div>
-
 		    </div>
             <!-- /.box-body -->
           </div>

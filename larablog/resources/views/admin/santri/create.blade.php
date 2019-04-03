@@ -31,14 +31,26 @@
                 <div class="form-group">
                   <label for="nama" class="col-sm-2 control-label">Nama</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" value="{{ old('nama') }}">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="provinsi_id" class="col-sm-2 control-label">Provinsi</label>
+                  <div class="col-sm-10">
+                    <select name="provinsi_id" class="form-control">
+                      <option value="">-- Silahkan pilih provinsi --</option>
+                      @foreach ($provinsis as $provinsi)
+                        <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
+                      @endforeach
+                    </select>
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                   </div>
                 </div>
 

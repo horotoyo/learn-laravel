@@ -30,13 +30,14 @@ class GuruController extends Controller
             'required'      => ':attribute wajib diisi!',
             'min'           => ':attribute harus diisi minimal :min karakter!',
             'max'           => ':attribute harus diisi maksimal :max karakter!',
+            'unique'        => ':attribute yang anda isi telah digunakan',
         ];
     	
         $this->validate($request,[
                'nama'       => 'required',
                'nip'        => 'required',
                'hp'         => 'required|numeric',
-               'email'      => 'required|email',
+               'email'      => 'required|email|unique:guru,email',
                'gender'     => 'required',
         ], $messages);
 
@@ -67,13 +68,14 @@ class GuruController extends Controller
             'required'      => ':attribute wajib diisi!',
             'min'           => ':attribute harus diisi minimal :min karakter!',
             'max'           => ':attribute harus diisi maksimal :max karakter!',
+            'unique'        => ':attribute yang anda isi telah digunakan',
         ];
         
         $this->validate($request,[
                'nama'       => 'required',
                'nip'        => 'required',
                'hp'         => 'required|numeric',
-               'email'      => 'required|email',
+               'email'      => 'required|email|unique:guru,email,'.$id,
                'gender'     => 'required',
         ], $messages);
 

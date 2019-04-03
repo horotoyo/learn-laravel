@@ -31,28 +31,28 @@
                 <div class="form-group">
                   <label for="nama" class="col-sm-2 control-label">Nama</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                    <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama" value="{{ old('nama') }}">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="nip" class="col-sm-2 control-label">NIP</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="nip" name="nip" placeholder="NIP">
+                    <input type="text" class="form-control" id="nip" name="nip" placeholder="NIP" value="{{ old('nip') }}">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="hp" class="col-sm-2 control-label">No. HP</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="hp" name="hp" placeholder="No HP">
+                    <input type="text" class="form-control" id="hp" name="hp" placeholder="No HP" value="{{ old('hp') }}">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="email" class="col-sm-2 control-label">Email</label>
                   <div class="col-sm-10">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
                   </div>
                 </div>
 

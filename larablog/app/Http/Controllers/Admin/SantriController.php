@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\SantriModel;
+use App\Model\ProvinsiModel;
 
 class SantriController extends Controller
 {
@@ -18,31 +19,28 @@ class SantriController extends Controller
     //untuk tampilan input/create
     public function create()
     {
-    	return view($this->folder.'.create');
+        $provinsis          = ProvinsiModel::all();
+    	return view($this->folder.'.create', compact('provinsis'));
     }
 
     //proses input
     public function store(Request $request)
     {
-        $santri             = new SantriModel;
         $messages = [
             'required'      => ':attribute wajib diisi!',
             'min'           => ':attribute harus diisi minimal :min karakter!',
             'max'           => ':attribute harus diisi maksimal :max karakter!',
+            'unique'        => ':attribute yang anda isi telah digunakan',
         ];
     	
         $this->validate($request,[
                'nama'       => 'required',
-               'email'      => 'required|email',
+               'email'      => 'required|email|unique:santri,email',
                'gender'     => 'required',
                'password'   => 'required|min:5'
         ], $messages);
 
-        $santri->nama       = $request->nama;
-        $santri->email      = $request->email;
-        $santri->gender     = $request->gender;
-        $santri->password   = bcrypt($request->password);
-        $santri->save();
+        $santri = SantriModel::create($request->all());
 
     	return redirect('admin/santri')->with('success', 'Data berhasil di Diinput!');
     }
@@ -51,6 +49,7 @@ class SantriController extends Controller
     public function edit($id)
     {
         $santri             = SantriModel::find($id);
+        $provinsis          = ProvinsiModel::all();
         return view($this->folder.'.edit', compact('santri'));
     }
 
@@ -59,25 +58,27 @@ class SantriController extends Controller
     {
         $id                 = $request->id;
         $santri             = SantriModel::find($id);
+        $santri->update($request->all());
 
         $messages = [
             'required'      => ':attribute wajib diisi!',
             'min'           => ':attribute harus diisi minimal :min karakter!',
             'max'           => ':attribute harus diisi maksimal :max karakter!',
+            'unique'        => ':attribute yang anda isi telah digunakan',
         ];
         
         $this->validate($request,[
                'nama'       => 'required',
-               'email'      => 'required|email',
+               'email'      => 'required|email|unique:santri,email,'.$id,
                'gender'     => 'required',
-               'password'   => 'required|min:5'
+               'password'   => 'min:5'
         ], $messages);
 
-        $santri->nama       = $request->nama;
-        $santri->email      = $request->email;
-        $santri->gender     = $request->gender;
-        $santri->password   = bcrypt($request->password);
-        $santri->save();
+        // $santri->nama       = $request->nama;
+        // $santri->email      = $request->email;
+        // $santri->gender     = $request->gender;
+        // $santri->password   = bcrypt($request->password);
+        // $santri->save();
 
         return redirect('admin/santri')->with('success', 'Data berhasil di edit!');
     }
