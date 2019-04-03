@@ -39,3 +39,8 @@ Route::get('/categories/{category}/edit}', 'CategoryController@edit')->name('cat
 Route::put('/categories/{category}', 'CategoryController@update')->name('categories.update');
 Route::delete('/categories/{category}', 'CategoryController@destroy')->name('categories.destroy');
 Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
+
+//authentication
+Route::get('/login', 'AuthController@loginForm')->name('auth.login-form');
+Route::post('/login', 'AuthController@login')->name('auth.login');
+Route::get('/logout', 'AuthController@logout')->name('auth.logout');

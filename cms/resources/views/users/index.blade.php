@@ -5,6 +5,8 @@
 </head>
 <body>
 
+	{{ auth()->user()->name }}
+
 	@include('layouts.sidebar')
 	<h3>Users List - <a href="{{ route('users.create') }}">Create User</a></h3>
 	<table>
