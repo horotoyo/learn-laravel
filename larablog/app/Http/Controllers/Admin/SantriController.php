@@ -50,7 +50,7 @@ class SantriController extends Controller
     {
         $santri             = SantriModel::find($id);
         $provinsis          = ProvinsiModel::all();
-        return view($this->folder.'.edit', compact('santri'));
+        return view($this->folder.'.edit', compact('santri', 'provinsis'));
     }
 
     //proses edit
@@ -68,17 +68,12 @@ class SantriController extends Controller
         ];
         
         $this->validate($request,[
-               'nama'       => 'required',
-               'email'      => 'required|email|unique:santri,email,'.$id,
-               'gender'     => 'required',
-               'password'   => 'min:5'
+               'nama'           => 'required',
+               'provinsi_id'    => 'required',
+               'email'          => 'required|email|unique:santri,email,'.$id,
+               'gender'         => 'required',
+               'password'       => 'required|min:5'
         ], $messages);
-
-        // $santri->nama       = $request->nama;
-        // $santri->email      = $request->email;
-        // $santri->gender     = $request->gender;
-        // $santri->password   = bcrypt($request->password);
-        // $santri->save();
 
         return redirect('admin/santri')->with('success', 'Data berhasil di edit!');
     }

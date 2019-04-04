@@ -49,7 +49,7 @@
 						<tr>
 							<td>{{ $nomor++ }}</td>
 							<td>{{ $row->nama }}</td>
-							<td>{{ $row->provinsi_id }}</td>
+							<td>{{ $row->provinsi->nama }}</td>
 							<td>{{ $row->email }}</td>
 							<td>{{ ($row->gender)?'Perempuan':'Laki-Laki' }}</td>
 							<td>{{ $row->created_at->format('d M Y') }}</td>

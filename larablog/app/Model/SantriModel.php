@@ -10,4 +10,9 @@ class SantriModel extends Model
     protected $fillable = [
     	'nama', 'provinsi_id', 'email', 'gender', 'password',
     ];
+
+    public function provinsi()
+    {
+    	return $this->belongsTo(ProvinsiModel::class);
+    }
 }
