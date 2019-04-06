@@ -41,7 +41,7 @@
                   <label for="provinsi_id" class="col-sm-2 control-label">Provinsi</label>
                   <div class="col-sm-10">
                     <select name="provinsi_id" class="form-control">
-                      <option value="">{{ $santri->provinsi->nama }}</option>
+                      <option value="{{ $santri->provinsi_id }}">{{ $santri->provinsi->nama }}</option>
                       @foreach ($provinsis as $provinsi)
                         <option value="{{ $provinsi->id }}">{{ $provinsi->nama }}</option>
                       @endforeach

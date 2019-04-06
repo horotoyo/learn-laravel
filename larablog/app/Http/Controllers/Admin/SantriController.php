@@ -40,7 +40,7 @@ class SantriController extends Controller
                'password'   => 'required|min:5'
         ], $messages);
 
-        $santri = SantriModel::create($request->all());
+        SantriModel::create($request->all());
 
     	return redirect('admin/santri')->with('success', 'Data berhasil di Diinput!');
     }
@@ -58,13 +58,13 @@ class SantriController extends Controller
     {
         $id                 = $request->id;
         $santri             = SantriModel::find($id);
-        $santri->update($request->all());
 
         $messages = [
             'required'      => ':attribute wajib diisi!',
             'min'           => ':attribute harus diisi minimal :min karakter!',
             'max'           => ':attribute harus diisi maksimal :max karakter!',
             'unique'        => ':attribute yang anda isi telah digunakan',
+
         ];
         
         $this->validate($request,[
@@ -72,16 +72,17 @@ class SantriController extends Controller
                'provinsi_id'    => 'required',
                'email'          => 'required|email|unique:santri,email,'.$id,
                'gender'         => 'required',
-               'password'       => 'required|min:5'
+               'password'       => 'min:5'
         ], $messages);
 
+        $santri->update($request->all());
         return redirect('admin/santri')->with('success', 'Data berhasil di edit!');
     }
 
     //untuk menghapus data
     public function delete(Request $request, $id)
     {
-        $santri             = SantriModel::find($id)->delete();
+        SantriModel::find($id)->delete();
         return redirect('admin/santri')->with('success', 'Data berhasil di hapus');
     }
 }
