@@ -33,7 +33,7 @@
                                 <th scope="row">{{ $nomor++ }}</th>
                                 <td>{{ $orangtua->nama }}</td>
                                 <td>{{ $orangtua->nik }}</td>
-                                <td>{{ $orangtua->id_santri }}</td>
+                                <td>{{ $orangtua->santri->nama }}</td>
                                 <td>{{ $orangtua->gender }}</td>
                                 <td>
                                     <form method="post" action="{{ route('orangtua.destroy', $orangtua->id) }}">

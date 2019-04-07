@@ -14,6 +14,6 @@ class Orangtua extends Model
 
     public function santri()
     {
-    	return $this->belongTo(Santri::class, 'id_santri');
+    	return $this->belongsTo(Santri::class, 'id_santri');
     }
 }
