@@ -25,6 +25,7 @@
 				<thead>
 					<tr>
 						<th>No</th>
+						<th>Img</th>
 						<th>Nama Lengkap</th>
 						<th>Alamat</th>
 						<th>Avatar</th>
@@ -34,10 +35,11 @@
 					@foreach ($avas as $ava)
 					<tr>
 						<td>{{ $nomor++ }}</td>
+						<td></td>
 						<td>{{ $ava->nama }}</td>
 						<td>{{ $ava->alamat }}</td>
 						<td>
-							<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ $ava->depan }}">Detail</button>
+							<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#{{ $ava->depan }}">See Avatar</button>
 							<!-- The Modal -->
 							  <div class="modal fade" id="{{ $ava->depan }}">
 							    <div class="modal-dialog">
@@ -53,6 +55,7 @@
 							        <div class="modal-body">
 							        	<div class="text-center">
 											<img src="{{ Avatar::create($ava->nama)->toBase64() }}" class="img-fluid"/>
+											<img src="{{ Storage::url($ava->file) }}" class="col-3 rounded-circle"">
 							        	</div>
 							        </div>
 

@@ -12,19 +12,26 @@
 
 	<div class="box mb-md-4">
 		<div class="box-body">
-			<form method="post" action="{{ route('profil.store') }}">
+			<form method="post" action="{{ route('profil.store') }}" enctype="multipart/form-data">
 				@csrf
 				<div class="row">
-					<div class="col-sm-3">
+					<div class="col-auto">
 						<input type="text" name="depan" placeholder="nama depan" class="form-control" required>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-auto">
 						<input type="text" name="belakang" placeholder="nama belakang" class="form-control" required>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-auto">
 						<input type="text" name="alamat" placeholder="nama alamat" class="form-control" required>
 					</div>
-					<button class="btn btn-primary btn-xs">Submit</button>
+					<div class="col-auto">
+						<input type="file" name="file" class="form-control-file">
+					</div>					
+				</div>
+				<div class="row mt-md-3">
+					<div class="col-md-3">
+						<button class="btn btn-primary btn-xs">Submit</button>
+					</div>
 				</div>
 			</form>
 		</div>
