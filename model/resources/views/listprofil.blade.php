@@ -55,7 +55,7 @@
 							        <div class="modal-body">
 							        	<div class="text-center">
 											<img src="{{ Avatar::create($ava->nama)->toBase64() }}" class="img-fluid"/>
-											<img src="{{ Storage::url($ava->file) }}" class="col-3 rounded-circle"">
+											<img src="{{ Storage::url($ava->file) }}" class="col-3 rounded-circle">
 							        	</div>
 							        </div>
 
